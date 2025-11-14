@@ -1,5 +1,7 @@
 # Dynamic Admin Dashboard
 
+Live Demo : https://dynamic-dashboard-pro.vercel.app/
+
 This project is a complete, fully responsive Admin Dashboard built from scratch using only vanilla HTML, CSS, and JavaScript. It demonstrates core front-end development principles, including DOM manipulation, API integration, local storage, and state management without relying on any frameworks.
 
 This dashboard is built as a single-page application (SPA) where content is dynamically shown and hidden based on user navigation.
