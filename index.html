@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="theme-light">
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container" id="dashboard-container">
+      <!-- ===== Part A: Sidebar ===== -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <a href="#" class="sidebar-logo">
+            <!-- Icon: Layout Dashboard -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="7" height="9" x="3" y="3" rx="1" />
+              <rect width="7" height="5" x="14" y="3" rx="1" />
+              <rect width="7" height="9" x="14" y="12" rx="1" />
+              <rect width="7" height="5" x="3" y="16" rx="1" />
+            </svg>
+            <span>AdminPanel</span>
+          </a>
+          <button
+            class="sidebar-toggle"
+            id="sidebar-toggle"
+            title="Collapse sidebar"
+          >
+            <!-- Icon: Chevrons Left -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="11 17 6 12 11 7" />
+              <polyline points="18 17 13 12 18 7" />
+            </svg>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-link active" data-page="dashboard">
+            <!-- Icon: Home -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-link" data-page="users">
+            <!-- Icon: Users -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span>Users</span>
+          </a>
+          <a href="#" class="nav-link" data-page="tasks">
+            <!-- Icon: Check Square -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 11 12 14 22 4" />
+              <path
+                d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+              />
+            </svg>
+            <span>Tasks</span>
+          </a>
+          <a href="#" class="nav-link" data-page="settings">
+            <!-- Icon: Settings -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+              />
+            </svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- ===== Part A: Top Navbar ===== -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button
+            class="mobile-menu-toggle"
+            id="mobile-menu-toggle"
+            title="Open menu"
+          >
+            <!-- Icon: Menu -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+          </button>
+          <div class="search-bar">
+            <!-- Icon: Search -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" x2="16.65" y1="21" y2="16.65" />
+            </svg>
+            <input
+              type="text"
+              id="api-search-input"
+              placeholder="Search users..."
+            />
+          </div>
+        </div>
+
+        <div class="navbar-icons">
+          <!-- Theme Toggle (Part D) -->
+          <button class="icon-button" id="theme-toggle" title="Toggle theme">
+            <!-- Icon: Sun (Light) -->
+            <svg
+              class="icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+            <!-- Icon: Moon (Dark) -->
+            <svg
+              class="icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="display: none"
+            >
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          </button>
+
+          <button class="icon-button" title="Notifications">
+            <!-- Icon: Bell -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+            </svg>
+            <div class="bell-badge"></div>
+          </button>
+
+          <div class="profile-dropdown">
+            <button class="profile-button" title="Profile" id="profile-button">
+              <img
+                src="https://placehold.co/40x40/6366F1/FFFFFF?text=V"
+                alt="Profile"
+              />
+            </button>
+            <!-- Dropdown menu -->
+            <div class="dropdown-menu" id="profile-dropdown-menu">
+              <a href="#" class="dropdown-link">My Profile</a>
+              <a href="#" class="dropdown-link" data-page-link="settings"
+                >Settings</a
+              >
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-link dropdown-link-danger">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===== Part A: Main Area ===== -->
+      <main class="main-content">
+        <!-- Page: Dashboard -->
+        <section id="page-dashboard" class="page-section active">
+          <div class="page-header">
+            <h1>Dashboard</h1>
+          </div>
+
+          <!-- Statistic Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-icon icon-users">
+                <!-- Icon: Users -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div class="stat-card-info">
+                <h3>Total Users</h3>
+                <span class="value" id="stat-total-users">0</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon icon-tasks">
+                <!-- Icon: Check Square -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="9 11 12 14 22 4" />
+                  <path
+                    d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                  />
+                </svg>
+              </div>
+              <div class="stat-card-info">
+                <h3>Pending Tasks</h3>
+                <span class="value" id="stat-pending-tasks">0</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon icon-reports">
+                <!-- Icon: Bar Chart -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" x2="12" y1="20" y2="10" />
+                  <line x1="18" x2="18" y1="20" y2="4" />
+                  <line x1="6" x2="6" y1="20" y2="16" />
+                </svg>
+              </div>
+              <div class="stat-card-info">
+                <h3>Reports</h3>
+                <span class="value">24</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Responsive Chart UI -->
+          <div class="card">
+            <div class="card-header">
+              <h2>User Activity (Demo Chart)</h2>
+            </div>
+            <div class="chart-container">
+              <div
+                class="chart-bar"
+                style="height: 60%"
+                data-value="150"
+                data-label="Mon"
+              ></div>
+              <div
+                class="chart-bar"
+                style="height: 80%"
+                data-value="210"
+                data-label="Tue"
+              ></div>
+              <div
+                class="chart-bar"
+                style="height: 50%"
+                data-value="120"
+                data-label="Wed"
+              ></div>
+              <div
+                class="chart-bar"
+                style="height: 70%"
+                data-value="180"
+                data-label="Thu"
+              ></div>
+              <div
+                class="chart-bar"
+                style="height: 90%"
+                data-value="250"
+                data-label="Fri"
+              ></div>
+              <div
+                class="chart-bar"
+                style="height: 40%"
+                data-value="100"
+                data-label="Sat"
+              ></div>
+              <div
+                class="chart-bar"
+                style="height: 30%"
+                data-value="80"
+                data-label="Sun"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Page: Users (Part B) -->
+        <section id="page-users" class="page-section">
+          <div class="page-header">
+            <h1>Users</h1>
+            <div class="page-actions">
+              <select
+                id="user-sort-select"
+                class="form-control"
+                style="width: auto"
+              >
+                <option value="default">Sort by</option>
+                <option value="az">Name (A-Z)</option>
+                <option value="za">Name (Z-A)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-wrapper">
+              <table class="table" id="users-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- JS will populate this -->
+                  <tr>
+                    <td colspan="4" class="table-state" id="users-table-state">
+                      Loading users...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              class="pagination-controls"
+              id="pagination-controls"
+              style="display: none"
+            >
+              <span class="pagination-info" id="pagination-info"></span>
+              <div class="pagination-buttons" id="pagination-buttons"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Page: Tasks (Part C) -->
+        <section id="page-tasks" class="page-section">
+          <div class="page-header">
+            <h1>Task Automation</h1>
+            <div class="page-actions">
+              <button class="btn btn-primary" id="add-task-btn">
+                <!-- Icon: Plus -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" x2="12" y1="5" y2="19" />
+                  <line x1="5" x2="19" y1="12" y2="12" />
+                </svg>
+                Add New Task
+              </button>
+            </div>
+          </div>
+
+          <!-- Task Filters -->
+          <div class="task-filters">
+            <select
+              id="filter-priority"
+              class="form-control"
+              style="width: auto"
+            >
+              <option value="all">All Priorities</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <select id="filter-status" class="form-control" style="width: auto">
+              <option value="all">All Statuses</option>
+              <option value="todo">To Do</option>
+              <option value="inprogress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+            <select
+              id="filter-deadline"
+              class="form-control"
+              style="width: auto"
+            >
+              <option value="all">All Deadlines</option>
+              <option value="upcoming">Upcoming (7 days)</option>
+            </select>
+          </div>
+
+          <!-- Task List -->
+          <div class="task-list" id="task-list">
+            <!-- JS will populate this -->
+          </div>
+        </section>
+
+        <!-- Page: Settings -->
+        <section id="page-settings" class="page-section">
+          <div class="page-header">
+            <h1>Settings</h1>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2>Preferences</h2>
+            </div>
+            <p>
+              Settings page content goes here. You can manage theme, language,
+              and other preferences.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ===== Part D: Reusable Modal ===== -->
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal" id="task-modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Add New Task</h2>
+        <button class="modal-close-btn icon-button" data-dismiss="modal">
+          <!-- Icon: X -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" x2="6" y1="6" y2="18" />
+            <line x1="6" x2="18" y1="6" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <form id="task-form">
+        <div class="modal-body">
+          <input type="hidden" id="task-id" />
+          <div class="form-group">
+            <label for="task-title">Title</label>
+            <input type="text" id="task-title" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="task-description">Description</label>
+            <textarea id="task-description" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" class="form-control" required>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="task-deadline">Deadline</label>
+            <input
+              type="date"
+              id="task-deadline"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="task-status">Status</label>
+            <select id="task-status" class="form-control" required>
+              <option value="todo">To Do</option>
+              <option value="inprogress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== Part D: Toast Notification Container ===== -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
